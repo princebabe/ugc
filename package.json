@@ -1,0 +1,20 @@
+{
+  "name": "temp-mail-app",
+  "version": "1.0.0",
+  "description": "Modern Temporary Email Web Application",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx live-server --port=3000",
+    "build": "echo 'Static HTML application - no build required'"
+  },
+  "keywords": [
+    "temporary-email",
+    "temp-mail",
+    "disposable-email"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
