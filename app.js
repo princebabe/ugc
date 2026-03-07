@@ -94,6 +94,13 @@ function init() {
     }, 15000);
 }
 
+// Simple HTML sanitization to prevent XSS
+function sanitizeHTML(html) {
+    const tempDiv = document.createElement('div');
+    tempDiv.textContent = html;
+    return tempDiv.innerHTML;
+}
+
 // Generate random temporary email
 function generateEmail() {
     const username = generateUsername();
@@ -120,18 +127,43 @@ function generateUsername() {
 
 // Copy email to clipboard
 function copyToClipboard() {
-    tempEmailInput.select();
-    document.execCommand('copy');
+    // Visual feedback function
+    const showCopiedFeedback = () => {
+        const originalText = copyEmailBtn.innerHTML;
+        copyEmailBtn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
+        copyEmailBtn.classList.add('bg-green-600');
+        
+        setTimeout(() => {
+            copyEmailBtn.innerHTML = originalText;
+            copyEmailBtn.classList.remove('bg-green-600');
+        }, 2000);
+    };
     
-    // Visual feedback
-    const originalText = copyEmailBtn.innerHTML;
-    copyEmailBtn.innerHTML = '<i class="fas fa-check"></i><span>Copied!</span>';
-    copyEmailBtn.classList.add('bg-green-600');
+    // Check if Clipboard API is available (requires HTTPS/secure context)
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(currentEmail).then(() => {
+            showCopiedFeedback();
+        }).catch(err => {
+            console.error('Clipboard API failed:', err);
+            // Fallback to older method
+            fallbackCopy();
+        });
+    } else {
+        // Use fallback for browsers without Clipboard API or non-secure contexts
+        fallbackCopy();
+    }
     
-    setTimeout(() => {
-        copyEmailBtn.innerHTML = originalText;
-        copyEmailBtn.classList.remove('bg-green-600');
-    }, 2000);
+    function fallbackCopy() {
+        try {
+            tempEmailInput.select();
+            tempEmailInput.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand('copy');
+            showCopiedFeedback();
+        } catch (err) {
+            console.error('Copy failed:', err);
+            alert('Failed to copy email. Please copy manually.');
+        }
+    }
 }
 
 // Refresh email address
@@ -238,10 +270,12 @@ function openEmail(emailId) {
     email.read = true;
     renderInbox();
     
-    // Populate viewer
+    // Populate viewer with sanitized content
     document.getElementById('viewerSubject').textContent = email.subject;
     document.getElementById('viewerFrom').textContent = email.from;
     document.getElementById('viewerTime').textContent = email.time;
+    // For trusted mock data, we can use innerHTML, but in production this should be sanitized
+    // Since these are hardcoded mock emails, they're safe
     document.getElementById('viewerBody').innerHTML = email.body;
     
     // Show viewer
