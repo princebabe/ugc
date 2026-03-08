@@ -1,6 +1,69 @@
 # TempMail - Modern Temporary Email Application
 
-A modern, responsive temporary email (temp mail) web application with a clean, futuristic design. This SaaS-style landing page and dashboard provides users with disposable email addresses to protect their privacy.
+A modern, responsive temporary email (temp mail) web application with a clean, futuristic design. This full-stack application includes both frontend (SaaS-style landing page) and backend (Node.js/Express API) for managing disposable email addresses.
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/princebabe/ugc.git
+cd ugc
+```
+
+2. **Install dependencies:**
+```bash
+npm install
+```
+
+3. **Start the server:**
+```bash
+npm start
+```
+
+4. **Open your browser:**
+Navigate to `http://localhost:3000`
+
+### Development Mode
+
+For auto-reload during development:
+```bash
+npm run dev
+```
+
+## 📁 Project Structure
+
+```
+ugc/
+├── server.js              # Backend API server (Node.js/Express)
+├── app.js                 # Frontend JavaScript (integrated with backend)
+├── index.html             # Main application HTML
+├── package.json           # Dependencies and scripts
+├── .env.example          # Environment configuration template
+├── API_DOCUMENTATION.md   # Complete API documentation
+├── README.md             # This file
+└── IMPLEMENTATION_SUMMARY.md  # Technical implementation details
+```
+
+## 🔧 Technology Stack
+
+### Frontend
+- **HTML5**: Semantic markup, SEO optimized
+- **Tailwind CSS**: Utility-first CSS framework (CDN)
+- **JavaScript**: Vanilla ES6+ with Fetch API
+- **Font Awesome**: Icons
+- **Google Fonts**: Inter typography
+
+### Backend
+- **Node.js**: JavaScript runtime
+- **Express**: Web application framework
+- **CORS**: Cross-origin resource sharing
+- **In-Memory Storage**: Session and email management
 
 ## Features
 
@@ -111,32 +174,85 @@ Accordion-style questions including:
 - **Animations**: Smooth hover effects, fade-in animations, scale transforms
 - **Dark Mode**: Full dark mode support with toggle
 
-## Technology Stack
+## 🔌 Backend API
 
-- **Frontend**: HTML5, Tailwind CSS (CDN), Vanilla JavaScript
-- **Icons**: Font Awesome 6.5.1
-- **Fonts**: Google Fonts (Inter)
-- **Responsive**: Mobile-first design, fully responsive
-- **Performance**: Optimized for speed and SEO
+The application includes a full RESTful API for managing temporary emails. See [API_DOCUMENTATION.md](API_DOCUMENTATION.md) for complete API reference.
 
-## Getting Started
+### Key Endpoints
 
-### Option 1: Open Directly
-Simply open `index.html` in a modern web browser.
+- `POST /api/email/generate` - Generate new temporary email
+- `GET /api/inbox/:sessionId` - Get inbox emails
+- `GET /api/email/:sessionId/:emailId` - View specific email
+- `DELETE /api/inbox/:sessionId` - Clear inbox
+- `POST /api/email/simulate/:sessionId` - Simulate receiving email (demo)
+- `GET /api/stats` - Server statistics
+- `GET /api/health` - Health check
 
-### Option 2: Local Server
-```bash
-# Using Python
-python -m http.server 8000
+### Example API Usage
 
-# Using Node.js
-npx live-server
+```javascript
+// Generate a new email
+const response = await fetch('http://localhost:3000/api/email/generate', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ username: 'myusername' })
+});
+const { sessionId, email } = await response.json();
 
-# Using PHP
-php -S localhost:8000
+// Get inbox
+const inbox = await fetch(`http://localhost:3000/api/inbox/${sessionId}`);
+const emails = await inbox.json();
 ```
 
-Then navigate to `http://localhost:8000` in your browser.
+## 📝 Configuration
+
+Create a `.env` file based on `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+Available configuration options:
+- `PORT` - Server port (default: 3000)
+- `EMAIL_EXPIRY_HOURS` - Email session expiry time (default: 2)
+- `NODE_ENV` - Environment (development/production)
+
+## 🎯 How It Works
+
+1. **Email Generation**: User clicks to generate a temporary email
+2. **Backend Creates Session**: Server generates unique session ID and email address
+3. **Session Storage**: Email session stored in memory with 2-hour expiration
+4. **Email Simulation**: For demo, emails are simulated every few seconds
+5. **Auto-Refresh**: Frontend polls backend every 30 seconds for new emails
+6. **Email Viewing**: Click email to view full content (marks as read)
+7. **Auto-Cleanup**: Server automatically removes expired sessions
+
+## 🧪 Testing the Application
+
+### Manual Testing
+
+1. Start the server: `npm start`
+2. Open browser to `http://localhost:3000`
+3. Click action buttons to test features:
+   - **Copy**: Copies email to clipboard
+   - **Refresh**: Generates new email address
+   - **Change**: Custom username input
+   - **Delete**: Clears all emails from inbox
+
+### API Testing
+
+Use cURL or Postman to test API endpoints:
+
+```bash
+# Generate email
+curl -X POST http://localhost:3000/api/email/generate
+
+# Health check
+curl http://localhost:3000/api/health
+
+# Get statistics
+curl http://localhost:3000/api/stats
+```
 
 ## File Structure
 

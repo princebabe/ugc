@@ -1,9 +1,49 @@
-// Temp Mail Application - Integrated with Backend
-// This file connects the frontend UI with the backend API
+// Temp Mail Application JavaScript
 
 // Configuration
-const API_BASE_URL = window.location.origin + '/api';
-let sessionId = localStorage.getItem('tempmail_session_id');
+const DOMAINS = [
+    'tempmail.com',
+    'disposable.email',
+    'throwaway.email',
+    'temp-inbox.com',
+    'quickmail.io',
+    'privateemail.net'
+];
+
+const MOCK_EMAILS = [
+    {
+        id: 1,
+        from: 'noreply@github.com',
+        subject: 'Welcome to GitHub!',
+        preview: 'Thanks for signing up. Here are some tips to get started...',
+        body: '<p>Welcome to GitHub! We\'re excited to have you join our community of developers.</p><p>Here are some quick tips to get started...</p>',
+        time: '2 min ago',
+        read: false,
+        hasAttachment: false
+    },
+    {
+        id: 2,
+        from: 'support@netflix.com',
+        subject: 'Verify your email address',
+        preview: 'Please verify your email to complete registration...',
+        body: '<p>Hi there,</p><p>Please click the button below to verify your email address and complete your Netflix registration.</p>',
+        time: '15 min ago',
+        read: false,
+        hasAttachment: false
+    },
+    {
+        id: 3,
+        from: 'newsletter@techcrunch.com',
+        subject: 'Daily Tech News Digest',
+        preview: 'Today\'s top stories in technology and startups...',
+        body: '<p>Here are today\'s top technology stories:</p><ul><li>AI breakthroughs</li><li>Startup funding news</li><li>Product launches</li></ul>',
+        time: '1 hour ago',
+        read: true,
+        hasAttachment: true
+    }
+];
+
+// State management
 let currentEmail = '';
 let inbox = [];
 let refreshTimer = 30;
@@ -32,128 +72,57 @@ const messagesReceivedEl = document.getElementById('messagesReceived');
 const activeUsersEl = document.getElementById('activeUsers');
 const domainsAvailableEl = document.getElementById('domainsAvailable');
 
-// API Helper Functions
-async function apiCall(endpoint, method = 'GET', body = null) {
-    try {
-        const options = {
-            method,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
-        
-        if (body) {
-            options.body = JSON.stringify(body);
-        }
-        
-        const response = await fetch(API_BASE_URL + endpoint, options);
-        const data = await response.json();
-        
-        if (!response.ok) {
-            throw new Error(data.error || 'API request failed');
-        }
-        
-        return data;
-    } catch (error) {
-        console.error('API Error:', error);
-        throw error;
-    }
-}
-
 // Initialize application
-async function init() {
-    checkDarkMode();
+function init() {
+    generateEmail();
     setupEventListeners();
     startAutoRefresh();
+    animateStats();
+    checkDarkMode();
     
-    // Try to restore existing session or generate new email
-    if (sessionId) {
-        try {
-            await loadInbox();
-        } catch (error) {
-            console.log('Session expired or invalid, generating new email');
-            sessionId = null;
-            localStorage.removeItem('tempmail_session_id');
-            await generateEmail();
-        }
-    } else {
-        await generateEmail();
-    }
+    // Simulate receiving emails after a delay
+    setTimeout(() => {
+        receiveEmail(MOCK_EMAILS[0]);
+    }, 3000);
     
-    // Load statistics
-    await loadStats();
+    setTimeout(() => {
+        receiveEmail(MOCK_EMAILS[1]);
+    }, 8000);
     
-    // Simulate receiving emails for demo purposes
-    setTimeout(() => simulateReceiveEmail(), 5000);
-    setTimeout(() => simulateReceiveEmail(), 12000);
-    setTimeout(() => simulateReceiveEmail(), 20000);
+    setTimeout(() => {
+        receiveEmail(MOCK_EMAILS[2]);
+    }, 15000);
 }
 
-// Generate new temporary email
-async function generateEmail(username = null, domain = null) {
-    try {
-        tempEmailInput.value = 'Generating...';
-        
-        const data = await apiCall('/email/generate', 'POST', { username, domain });
-        
-        sessionId = data.sessionId;
-        currentEmail = data.email;
-        localStorage.setItem('tempmail_session_id', sessionId);
-        
-        tempEmailInput.value = currentEmail;
-        inbox = [];
-        renderInbox();
-        
-        // Add animation
-        tempEmailInput.classList.add('fade-in');
-        setTimeout(() => {
-            tempEmailInput.classList.remove('fade-in');
-        }, 500);
-        
-        console.log('Generated email:', currentEmail);
-    } catch (error) {
-        console.error('Failed to generate email:', error);
-        tempEmailInput.value = 'Error generating email';
-        alert('Failed to generate email. Please try again.');
-    }
+// Simple HTML sanitization to prevent XSS
+function sanitizeHTML(html) {
+    const tempDiv = document.createElement('div');
+    tempDiv.textContent = html;
+    return tempDiv.innerHTML;
 }
 
-// Load inbox from backend
-async function loadInbox() {
-    try {
-        if (!sessionId) {
-            throw new Error('No active session');
-        }
-        
-        const data = await apiCall(`/inbox/${sessionId}`);
-        
-        currentEmail = data.email;
-        tempEmailInput.value = currentEmail;
-        inbox = data.inbox || [];
-        renderInbox();
-        
-        console.log(`Loaded ${inbox.length} emails from inbox`);
-    } catch (error) {
-        console.error('Failed to load inbox:', error);
-        throw error;
-    }
+// Generate random temporary email
+function generateEmail() {
+    const username = generateUsername();
+    const domain = DOMAINS[Math.floor(Math.random() * DOMAINS.length)];
+    currentEmail = `${username}@${domain}`;
+    tempEmailInput.value = currentEmail;
+    
+    // Add animation
+    tempEmailInput.classList.add('fade-in');
+    setTimeout(() => {
+        tempEmailInput.classList.remove('fade-in');
+    }, 500);
 }
 
-// Simulate receiving an email (for demonstration)
-async function simulateReceiveEmail() {
-    try {
-        if (!sessionId) return;
-        
-        const data = await apiCall(`/email/simulate/${sessionId}`, 'POST');
-        
-        if (data.success) {
-            // Reload inbox to get the new email
-            await loadInbox();
-            updateStats();
-        }
-    } catch (error) {
-        console.error('Failed to simulate email:', error);
-    }
+// Generate random username
+function generateUsername() {
+    const adjectives = ['quick', 'lazy', 'happy', 'cool', 'smart', 'blue', 'red', 'green'];
+    const nouns = ['fox', 'cat', 'dog', 'bird', 'fish', 'tiger', 'bear', 'wolf'];
+    const adj = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const noun = nouns[Math.floor(Math.random() * nouns.length)];
+    const num = Math.floor(Math.random() * 1000);
+    return `${adj}${noun}${num}`;
 }
 
 // Copy email to clipboard
@@ -198,8 +167,9 @@ function copyToClipboard() {
 }
 
 // Refresh email address
-async function refreshEmail() {
-    await generateEmail();
+function refreshEmail() {
+    generateEmail();
+    clearInbox();
     
     // Show animation
     autoRefreshIndicator.classList.remove('hidden');
@@ -209,10 +179,12 @@ async function refreshEmail() {
 }
 
 // Change username with prompt
-async function changeUsername() {
-    const newUsername = prompt('Enter your custom username:', '');
+function changeUsername() {
+    const newUsername = prompt('Enter your custom username:', generateUsername());
     if (newUsername && newUsername.trim()) {
-        await generateEmail(newUsername.trim());
+        const domain = currentEmail.split('@')[1];
+        currentEmail = `${newUsername.trim()}@${domain}`;
+        tempEmailInput.value = currentEmail;
     }
 }
 
@@ -222,24 +194,23 @@ function showQRCode() {
 }
 
 // Delete inbox
-async function clearInbox() {
-    if (!confirm('Are you sure you want to delete all emails?')) {
-        return;
-    }
-    
-    try {
-        await apiCall(`/inbox/${sessionId}`, 'DELETE');
+function clearInbox() {
+    if (confirm('Are you sure you want to delete all emails?')) {
         inbox = [];
         renderInbox();
-    } catch (error) {
-        console.error('Failed to clear inbox:', error);
-        alert('Failed to clear inbox. Please try again.');
     }
 }
 
 // Show history
 function showHistory() {
     alert('Email History\n\nIn a real implementation, this would show your previous temporary email addresses.');
+}
+
+// Receive new email
+function receiveEmail(email) {
+    inbox.unshift({...email, id: Date.now()});
+    renderInbox();
+    updateStats();
 }
 
 // Render inbox
@@ -283,7 +254,7 @@ function renderInbox() {
         // Add click listeners to email items
         document.querySelectorAll('.email-item').forEach(item => {
             item.addEventListener('click', () => {
-                const emailId = item.dataset.id;
+                const emailId = parseInt(item.dataset.id);
                 openEmail(emailId);
             });
         });
@@ -291,33 +262,24 @@ function renderInbox() {
 }
 
 // Open email viewer
-async function openEmail(emailId) {
-    try {
-        const data = await apiCall(`/email/${sessionId}/${emailId}`);
-        const email = data.email;
-        
-        if (!email) return;
-        
-        // Update local inbox
-        const localEmail = inbox.find(e => e.id === emailId);
-        if (localEmail) {
-            localEmail.read = true;
-        }
-        renderInbox();
-        
-        // Populate viewer with sanitized content
-        document.getElementById('viewerSubject').textContent = email.subject;
-        document.getElementById('viewerFrom').textContent = email.from;
-        document.getElementById('viewerTime').textContent = email.time;
-        // For trusted mock data, we can use innerHTML, but in production this should be sanitized
-        document.getElementById('viewerBody').innerHTML = email.body;
-        
-        // Show viewer
-        emailViewer.classList.remove('hidden');
-    } catch (error) {
-        console.error('Failed to open email:', error);
-        alert('Failed to load email. Please try again.');
-    }
+function openEmail(emailId) {
+    const email = inbox.find(e => e.id === emailId);
+    if (!email) return;
+    
+    // Mark as read
+    email.read = true;
+    renderInbox();
+    
+    // Populate viewer with sanitized content
+    document.getElementById('viewerSubject').textContent = email.subject;
+    document.getElementById('viewerFrom').textContent = email.from;
+    document.getElementById('viewerTime').textContent = email.time;
+    // For trusted mock data, we can use innerHTML, but in production this should be sanitized
+    // Since these are hardcoded mock emails, they're safe
+    document.getElementById('viewerBody').innerHTML = email.body;
+    
+    // Show viewer
+    emailViewer.classList.remove('hidden');
 }
 
 // Close email viewer
@@ -327,53 +289,27 @@ closeViewer.addEventListener('click', () => {
 
 // Auto refresh timer
 function startAutoRefresh() {
-    autoRefreshInterval = setInterval(async () => {
+    autoRefreshInterval = setInterval(() => {
         refreshTimer--;
         refreshTimerEl.textContent = `${refreshTimer}s`;
         
         if (refreshTimer <= 0) {
             refreshTimer = 30;
-            // Auto-refresh inbox
-            if (sessionId) {
-                autoRefreshIndicator.classList.remove('hidden');
-                try {
-                    await loadInbox();
-                } catch (error) {
-                    console.error('Auto-refresh failed:', error);
-                }
-                setTimeout(() => {
-                    autoRefreshIndicator.classList.add('hidden');
-                }, 1000);
-            }
+            // Simulate checking for new emails
+            autoRefreshIndicator.classList.remove('hidden');
+            setTimeout(() => {
+                autoRefreshIndicator.classList.add('hidden');
+            }, 1000);
         }
     }, 1000);
 }
 
-// Load and animate statistics
-async function loadStats() {
-    try {
-        const data = await apiCall('/stats');
-        
-        if (data.success && data.stats) {
-            animateCounter(emailsGeneratedEl, 1247856);
-            animateCounter(messagesReceivedEl, 8934521 + data.stats.totalEmails);
-            animateCounter(activeUsersEl, 15234 + data.stats.activeSessions);
-            animateCounter(domainsAvailableEl, data.stats.availableDomains);
-        } else {
-            // Fallback to default values
-            animateCounter(emailsGeneratedEl, 1247856);
-            animateCounter(messagesReceivedEl, 8934521);
-            animateCounter(activeUsersEl, 15234);
-            animateCounter(domainsAvailableEl, 6);
-        }
-    } catch (error) {
-        console.error('Failed to load stats:', error);
-        // Use default values
-        animateCounter(emailsGeneratedEl, 1247856);
-        animateCounter(messagesReceivedEl, 8934521);
-        animateCounter(activeUsersEl, 15234);
-        animateCounter(domainsAvailableEl, 6);
-    }
+// Animate statistics
+function animateStats() {
+    animateCounter(emailsGeneratedEl, 1247856);
+    animateCounter(messagesReceivedEl, 8934521);
+    animateCounter(activeUsersEl, 15234);
+    animateCounter(domainsAvailableEl, 6);
 }
 
 function animateCounter(element, target) {
