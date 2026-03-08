@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get your free temporary email address. Protect your privacy with disposable email addresses.">
+    <meta name="keywords" content="temporary email, temp mail, disposable email, fake email, privacy">
+    <title>Temporary Email - Free Disposable Email Address</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <!-- Note: For production, use a local build with npm and include integrity attribute -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <!-- Note: For production, use a specific version with integrity attribute for security -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-card-dark {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .dark-mode-bg {
+            background: #1a1a2e;
+        }
+        
+        .dark .bg-white {
+            background: #16213e;
+        }
+        
+        .dark .text-gray-900 {
+            color: #fff;
+        }
+        
+        .dark .text-gray-700 {
+            color: #cbd5e1;
+        }
+        
+        .dark .text-gray-600 {
+            color: #94a3b8;
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    
+    <!-- Navigation Header -->
+    <nav class="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-envelope text-3xl gradient-text mr-2"></i>
+                    <span class="text-2xl font-bold gradient-text">TempMail</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-moon text-gray-700 dark:text-gray-300"></i>
+                    </button>
+                    <button class="px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 transition-colors">
+                        Login
+                    </button>
+                    <button class="px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top Banner Ad -->
+    <div class="bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900 dark:to-indigo-900 py-3">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm text-gray-600 dark:text-gray-300">
+                <i class="fas fa-ad"></i> Advertisement Space - Premium Banner (728x90)
+            </p>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 fade-in">
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+                    Get Your Free Temporary Email Address
+                </h1>
+                <p class="text-xl text-purple-100 mb-8">
+                    Protect your privacy with disposable email addresses. No registration required.
+                </p>
+            </div>
+
+            <!-- Email Generator Card -->
+            <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 fade-in">
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                        Your Temporary Email Address
+                    </label>
+                    <div class="flex items-center space-x-2">
+                        <div class="flex-1 relative">
+                            <input 
+                                type="text" 
+                                id="tempEmail" 
+                                readonly
+                                class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-lg font-mono focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 dark:text-white"
+                                value="loading..."
+                            >
+                            <div id="autoRefreshIndicator" class="absolute right-3 top-3 hidden">
+                                <i class="fas fa-sync-alt text-purple-500 animate-spin"></i>
+                            </div>
+                        </div>
+                        <button 
+                            id="copyEmailBtn"
+                            class="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl flex items-center space-x-2"
+                        >
+                            <i class="fas fa-copy"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                    <button id="refreshEmailBtn" class="px-4 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all shadow hover:shadow-lg flex items-center justify-center space-x-2">
+                        <i class="fas fa-sync-alt"></i>
+                        <span class="hidden md:inline">Refresh</span>
+                    </button>
+                    <button id="changeUsernameBtn" class="px-4 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-all shadow hover:shadow-lg flex items-center justify-center space-x-2">
+                        <i class="fas fa-user-edit"></i>
+                        <span class="hidden md:inline">Change</span>
+                    </button>
+                    <button id="qrCodeBtn" class="px-4 py-3 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-all shadow hover:shadow-lg flex items-center justify-center space-x-2">
+                        <i class="fas fa-qrcode"></i>
+                        <span class="hidden md:inline">QR Code</span>
+                    </button>
+                    <button id="deleteInboxBtn" class="px-4 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all shadow hover:shadow-lg flex items-center justify-center space-x-2">
+                        <i class="fas fa-trash-alt"></i>
+                        <span class="hidden md:inline">Delete</span>
+                    </button>
+                    <button id="historyBtn" class="px-4 py-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg transition-all shadow hover:shadow-lg flex items-center justify-center space-x-2">
+                        <i class="fas fa-history"></i>
+                        <span class="hidden md:inline">History</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center fade-in">
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2" id="emailsGenerated">0</div>
+                    <p class="text-gray-600 dark:text-gray-400">Emails Generated</p>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2" id="messagesReceived">0</div>
+                    <p class="text-gray-600 dark:text-gray-400">Messages Received</p>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2" id="activeUsers">0</div>
+                    <p class="text-gray-600 dark:text-gray-400">Active Users</p>
+                </div>
+                <div class="text-center fade-in">
+                    <div class="text-4xl md:text-5xl font-bold gradient-text mb-2" id="domainsAvailable">0</div>
+                    <p class="text-gray-600 dark:text-gray-400">Domains Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content with Sidebar Ads -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Left Sidebar Ad -->
+                <div class="lg:col-span-2 hidden lg:block">
+                    <div class="bg-gradient-to-b from-purple-100 to-indigo-100 dark:from-purple-900 dark:to-indigo-900 rounded-lg p-4 sticky top-24 h-[600px] flex items-center justify-center">
+                        <p class="text-sm text-gray-600 dark:text-gray-300 text-center rotate-0">
+                            <i class="fas fa-ad mb-2"></i><br>
+                            Left Sidebar<br>
+                            Ad Space<br>
+                            (160x600)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Inbox Section -->
+                <div class="lg:col-span-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+                        <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
+                                    <i class="fas fa-inbox mr-3 text-purple-500"></i>
+                                    Inbox
+                                </h2>
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">
+                                        Auto-refresh: <span id="refreshTimer" class="text-purple-600 dark:text-purple-400 font-semibold">30s</span>
+                                    </span>
+                                    <button class="p-2 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-lg hover:bg-purple-200 dark:hover:bg-purple-800 transition-colors">
+                                        <i class="fas fa-filter"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Email Search -->
+                            <div class="relative">
+                                <input 
+                                    type="text" 
+                                    placeholder="Search emails..." 
+                                    class="w-full px-4 py-2 pl-10 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 dark:text-white"
+                                >
+                                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                            </div>
+                        </div>
+
+                        <!-- Email List -->
+                        <div id="emailList" class="divide-y divide-gray-200 dark:divide-gray-700 max-h-[600px] overflow-y-auto">
+                            <!-- Empty State -->
+                            <div id="emptyInbox" class="p-12 text-center">
+                                <i class="fas fa-inbox text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
+                                <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">Your inbox is empty</h3>
+                                <p class="text-gray-500 dark:text-gray-400">New emails will appear here automatically</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email Viewer Modal Placeholder -->
+                    <div id="emailViewer" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+                            <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white" id="viewerSubject">Email Subject</h3>
+                                <button id="closeViewer" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                                    <i class="fas fa-times text-gray-600 dark:text-gray-300"></i>
+                                </button>
+                            </div>
+                            <div class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+                                <div class="mb-4">
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">From: <span id="viewerFrom" class="font-semibold text-gray-900 dark:text-white"></span></p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Time: <span id="viewerTime" class="font-semibold text-gray-900 dark:text-white"></span></p>
+                                </div>
+                                <div id="viewerBody" class="prose dark:prose-invert max-w-none">
+                                    Email content here...
+                                </div>
+                                <div class="mt-6 flex space-x-3">
+                                    <button class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                                        <i class="fas fa-download mr-2"></i>Download .eml
+                                    </button>
+                                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                        <i class="fas fa-file-pdf mr-2"></i>Export PDF
+                                    </button>
+                                    <button class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                                        <i class="fas fa-share mr-2"></i>Forward
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar Ad -->
+                <div class="lg:col-span-2 hidden lg:block">
+                    <div class="bg-gradient-to-b from-indigo-100 to-purple-100 dark:from-indigo-900 dark:to-purple-900 rounded-lg p-4 sticky top-24 h-[600px] flex items-center justify-center">
+                        <p class="text-sm text-gray-600 dark:text-gray-300 text-center">
+                            <i class="fas fa-ad mb-2"></i><br>
+                            Right Sidebar<br>
+                            Ad Space<br>
+                            (160x600)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inline Ad -->
+    <div class="bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-indigo-900 dark:to-purple-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm text-gray-600 dark:text-gray-300">
+                <i class="fas fa-ad"></i> Inline Advertisement Space (970x90)
+            </p>
+        </div>
+    </div>
+
+    <!-- Advanced Features Section -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Advanced Features</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">Everything you need for secure temporary email</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Feature Cards -->
+                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900 dark:to-indigo-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-bolt text-3xl text-purple-600 dark:text-purple-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Instant Email Generation</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Generate temporary emails instantly with one click</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900 dark:to-cyan-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-copy text-3xl text-blue-600 dark:text-blue-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">One-Click Copy</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Copy email addresses to clipboard instantly</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900 dark:to-teal-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-globe text-3xl text-green-600 dark:text-green-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Multiple Domain Support</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Choose from multiple available domains</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900 dark:to-orange-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-infinity text-3xl text-yellow-600 dark:text-yellow-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Unlimited Temp Emails</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Create as many temporary emails as you need</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-red-50 to-pink-50 dark:from-red-900 dark:to-pink-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-sync-alt text-3xl text-red-600 dark:text-red-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Real-Time Inbox Refresh</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Automatic inbox updates every 30 seconds</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900 dark:to-purple-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-eye text-3xl text-indigo-600 dark:text-indigo-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email Preview Panel</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">View emails with full formatting support</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900 dark:to-rose-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-download text-3xl text-pink-600 dark:text-pink-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Download as .eml</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Save emails in standard .eml format</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-900 dark:to-blue-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-share-alt text-3xl text-cyan-600 dark:text-cyan-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email Forwarding</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Forward emails to your real inbox</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900 dark:to-pink-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-shield-alt text-3xl text-purple-600 dark:text-purple-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Spam Protection</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Advanced spam filtering technology</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900 dark:to-red-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-clock text-3xl text-orange-600 dark:text-orange-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Auto-Delete Expired</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Emails automatically expire after set time</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-teal-50 to-green-50 dark:from-teal-900 dark:to-green-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-user-edit text-3xl text-teal-600 dark:text-teal-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Custom Username</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Create personalized email addresses</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900 dark:to-indigo-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-qrcode text-3xl text-blue-600 dark:text-blue-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">QR Code Generation</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Share email via QR code</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-900 dark:to-slate-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-moon text-3xl text-gray-600 dark:text-gray-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Dark Mode Support</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Easy on your eyes day or night</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900 dark:to-emerald-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-mobile-alt text-3xl text-green-600 dark:text-green-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Mobile Responsive</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Works perfectly on all devices</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-yellow-50 to-amber-50 dark:from-yellow-900 dark:to-amber-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-search text-3xl text-yellow-600 dark:text-yellow-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email Search</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Quickly find specific emails</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900 dark:to-orange-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-paperclip text-3xl text-red-600 dark:text-red-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Attachment Viewer</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">View and download attachments</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900 dark:to-violet-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-redo text-3xl text-purple-600 dark:text-purple-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">One-Click Reset</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Clear inbox with single click</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-900 dark:to-blue-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-history text-3xl text-indigo-600 dark:text-indigo-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email History</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Access previously generated emails</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-pink-50 to-fuchsia-50 dark:from-pink-900 dark:to-fuchsia-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-language text-3xl text-pink-600 dark:text-pink-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Multi-Language</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Available in multiple languages</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-cyan-50 to-teal-50 dark:from-cyan-900 dark:to-teal-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-chart-line text-3xl text-cyan-600 dark:text-cyan-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">SEO Optimized</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Search engine friendly pages</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900 dark:to-yellow-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-server text-3xl text-orange-600 dark:text-orange-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Custom Domain</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Support for custom domains</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-50 to-lime-50 dark:from-green-900 dark:to-lime-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-lock text-3xl text-green-600 dark:text-green-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Privacy Protection</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Your data is never stored</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-sky-50 dark:from-blue-900 dark:to-sky-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-share-nodes text-3xl text-blue-600 dark:text-blue-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Inbox Sharing</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Share temporary inbox with team</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-900 dark:to-purple-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-code text-3xl text-violet-600 dark:text-violet-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">API Access</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Developer-friendly REST API</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-rose-50 to-red-50 dark:from-rose-900 dark:to-red-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-bell text-3xl text-rose-600 dark:text-rose-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email Notifications</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Get notified of new emails</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900 dark:to-orange-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-hourglass-half text-3xl text-amber-600 dark:text-amber-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email Timer</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Set custom expiration times</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900 dark:to-teal-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-random text-3xl text-emerald-600 dark:text-emerald-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Domain Rotation</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Automatic domain switching</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-sky-50 to-blue-50 dark:from-sky-900 dark:to-blue-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-brain text-3xl text-sky-600 dark:text-sky-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">AI Spam Filter</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Machine learning spam detection</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-fuchsia-50 to-pink-50 dark:from-fuchsia-900 dark:to-pink-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-file-pdf text-3xl text-fuchsia-600 dark:text-fuchsia-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">PDF Export</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Export emails as PDF files</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-lime-50 to-green-50 dark:from-lime-900 dark:to-green-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-cloud text-3xl text-lime-600 dark:text-lime-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Cloud Storage</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Store inbox in the cloud</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-50 to-gray-50 dark:from-slate-900 dark:to-gray-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-envelope-open text-3xl text-slate-600 dark:text-slate-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Read Status</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Track read/unread emails</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-900 dark:to-pink-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-clipboard text-3xl text-rose-600 dark:text-rose-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Copy Content</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Copy email content easily</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900 dark:to-cyan-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-key text-3xl text-blue-600 dark:text-blue-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Encryption</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Secure end-to-end encryption</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900 dark:to-indigo-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-user-shield text-3xl text-purple-600 dark:text-purple-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Session Protection</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Secure session management</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900 dark:to-cyan-900 p-6 rounded-xl shadow-lg hover-scale">
+                    <i class="fas fa-tachometer-alt text-3xl text-teal-600 dark:text-teal-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Global CDN</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Lightning-fast performance worldwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">What Our Users Say</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">Join thousands of satisfied users</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover-scale">
+                    <div class="flex items-center mb-4">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+Johnson&background=667eea&color=fff" alt="Sarah Johnson" class="w-12 h-12 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Sarah Johnson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        "This is the best temporary email service I've ever used. Clean interface and super fast!"
+                    </p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover-scale">
+                    <div class="flex items-center mb-4">
+                        <img src="https://ui-avatars.com/api/?name=Mike+Chen&background=764ba2&color=fff" alt="Mike Chen" class="w-12 h-12 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Mike Chen</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        "Perfect for testing and protecting my privacy. The real-time inbox is amazing!"
+                    </p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover-scale">
+                    <div class="flex items-center mb-4">
+                        <img src="https://ui-avatars.com/api/?name=Emma+Davis&background=f59e0b&color=fff" alt="Emma Davis" class="w-12 h-12 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Emma Davis</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        "No more spam in my real inbox! This service is a lifesaver for online shopping."
+                    </p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover-scale">
+                    <div class="flex items-center mb-4">
+                        <img src="https://ui-avatars.com/api/?name=Alex+Kumar&background=10b981&color=fff" alt="Alex Kumar" class="w-12 h-12 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">Alex Kumar</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        "The API access is fantastic for developers. Great features and excellent uptime!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Latest from Our Blog</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">Tips and guides for online privacy</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <article class="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900 dark:to-indigo-900 rounded-xl shadow-lg overflow-hidden hover-scale">
+                    <div class="h-48 bg-gradient-to-r from-purple-400 to-indigo-500 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Privacy Protection Guide</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Learn how to protect your privacy online with temporary emails.</p>
+                        <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900 dark:to-cyan-900 rounded-xl shadow-lg overflow-hidden hover-scale">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-cyan-500 flex items-center justify-center">
+                        <i class="fas fa-envelope text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Disposable Email Usage</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Best practices for using temporary email addresses effectively.</p>
+                        <a href="#" class="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900 dark:to-teal-900 rounded-xl shadow-lg overflow-hidden hover-scale">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-teal-500 flex items-center justify-center">
+                        <i class="fas fa-ban text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Avoiding Spam Forever</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Stop spam emails from cluttering your real inbox.</p>
+                        <a href="#" class="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900 dark:to-orange-900 rounded-xl shadow-lg overflow-hidden hover-scale">
+                    <div class="h-48 bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center">
+                        <i class="fas fa-lock text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Online Security Tips</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Essential security tips for protecting your digital identity.</p>
+                        <a href="#" class="text-yellow-600 dark:text-yellow-400 hover:text-yellow-700 dark:hover:text-yellow-300 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">Everything you need to know</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-900 dark:text-white">How long do temporary emails last?</span>
+                        <i class="fas fa-chevron-down text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 bg-gray-50 dark:bg-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Temporary emails typically last for 1-2 hours by default. You can manually delete them or they will auto-expire after the set time period. Premium users can customize the expiration time.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-900 dark:text-white">Is the service really free?</span>
+                        <i class="fas fa-chevron-down text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 bg-gray-50 dark:bg-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Yes! Our basic service is completely free with no hidden costs. We offer premium features for users who need advanced functionality, but the core temporary email service will always be free.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-900 dark:text-white">Can I choose my own domain?</span>
+                        <i class="fas fa-chevron-down text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 bg-gray-50 dark:bg-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Yes! We provide multiple domains to choose from. You can select your preferred domain from the dropdown menu when generating a new temporary email address. Custom domains are available for premium users.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-900 dark:text-white">Is my privacy protected?</span>
+                        <i class="fas fa-chevron-down text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 bg-gray-50 dark:bg-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">
+                            Absolutely! We take privacy seriously. We don't store any personal information, and all emails are automatically deleted after expiration. We use encryption to protect your data and never share information with third parties.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-900 dark:text-white">Can I use this for important accounts?</span>
+                        <i class="fas fa-chevron-down text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 bg-gray-50 dark:bg-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">
+                            We recommend using temporary emails for testing, one-time registrations, or when you want to avoid spam. For important accounts (banking, social media, etc.), use your permanent email address.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
+                    <button class="faq-question w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-900 dark:text-white">How many emails can I create?</span>
+                        <i class="fas fa-chevron-down text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 py-4 bg-gray-50 dark:bg-gray-700">
+                        <p class="text-gray-600 dark:text-gray-400">
+                            You can create unlimited temporary email addresses! There's no limit on the number of emails you can generate or receive.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Ad -->
+    <div class="bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900 dark:to-indigo-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm text-gray-600 dark:text-gray-300">
+                <i class="fas fa-ad"></i> Footer Advertisement Space (970x90)
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="gradient-bg py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-envelope text-3xl text-white mr-2"></i>
+                        <span class="text-2xl font-bold text-white">TempMail</span>
+                    </div>
+                    <p class="text-purple-100">
+                        Your privacy is our priority. Get free temporary email addresses instantly.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-purple-100 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-purple-100 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#" class="text-purple-100 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-purple-100 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-purple-100 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-purple-100 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="text-purple-100 hover:text-white transition-colors">API Access</a></li>
+                        <li><a href="#" class="text-purple-100 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-facebook-f text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-instagram text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-purple-400 border-opacity-30 pt-8 text-center">
+                <p class="text-purple-100">
+                    &copy; 2024 TempMail. All rights reserved. Built with <i class="fas fa-heart text-red-400"></i> for privacy.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
